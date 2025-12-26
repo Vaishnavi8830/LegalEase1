@@ -1,0 +1,159 @@
+const indianLaws = {
+    "Constitutional Law": [
+        "Constitution of India",
+        "Fundamental Rights",
+        "Directive Principles of State Policy",
+        "Constitutional Amendments",
+        "Right to Constitutional Remedies",
+        "Judicial Review",
+        "Representation of the People Act, 1950",
+        "Representation of the People Act, 1951",
+        "Contempt of Courts Act, 1971"
+    ],
+
+    "Criminal Law": [
+        "Indian Penal Code (IPC)",
+        "Bharatiya Nyaya Sanhita, 2023",
+        "Narcotic Drugs and Psychotropic Substances Act, 1985",
+        "Prevention of Corruption Act, 1988",
+        "Protection of Children from Sexual Offences Act, 2012",
+        "Arms Act, 1959",
+        "Unlawful Activities (Prevention) Act, 1967",
+        "Prevention of Money Laundering Act, 2002"
+    ],
+
+    "Civil Law": [
+        "Indian Contract Act, 1872",
+        "Sale of Goods Act, 1930",
+        "Specific Relief Act, 1963",
+        "Limitation Act, 1963",
+        "Code of Civil Procedure, 1908",
+        "Arbitration and Conciliation Act, 1996",
+        "Indian Trusts Act, 1882"
+    ],
+
+    "Property Law": [
+        "Transfer of Property Act, 1882",
+        "Indian Succession Act, 1925",
+        "Registration Act, 1908",
+        "Indian Easements Act, 1882",
+        "Indian Stamp Act, 1899",
+        "Real Estate (Regulation and Development) Act, 2016 (RERA)",
+        "Prohibition of Benami Property Transactions Act, 1988",
+        "Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013"
+    ],
+
+    "Family Law": [
+        "Hindu Marriage Act, 1955",
+        "Hindu Succession Act, 1956",
+        "Hindu Adoption and Maintenance Act, 1956",
+        "Hindu Minority and Guardianship Act, 1956",
+        "Special Marriage Act, 1954",
+        "Muslim Personal Law",
+        "Christian Marriage Act, 1872",
+        "Parsi Marriage and Divorce Act, 1936",
+        "Guardians and Wards Act, 1890",
+        "Prohibition of Child Marriage Act, 2006",
+        "Protection of Women from Domestic Violence Act, 2005",
+        "Maintenance and Welfare of Parents and Senior Citizens Act, 2007"
+    ],
+
+    "Labor Law": [
+        "Industrial Disputes Act, 1947",
+        "Factories Act, 1948",
+        "Minimum Wages Act, 1948",
+        "Payment of Wages Act, 1936",
+        "Employees' State Insurance Act, 1948",
+        "Employees' Provident Funds Act, 1952",
+        "Maternity Benefit Act, 1961",
+        "Payment of Bonus Act, 1965",
+        "Contract Labour (Regulation and Abolition) Act, 1970",
+        "Payment of Gratuity Act, 1972",
+        "Trade Unions Act, 1926",
+        "Code on Wages, 2019",
+        "Industrial Relations Code, 2020",
+        "Code on Social Security, 2020",
+        "Occupational Safety, Health and Working Conditions Code, 2020"
+    ],
+
+    "Environmental Law": [
+        "Environment Protection Act, 1986",
+        "Water Pollution Control Act, 1974",
+        "Air Pollution Control Act, 1981",
+        "Wildlife Protection Act, 1972",
+        "Forest Conservation Act, 1980",
+        "Biological Diversity Act, 2002",
+        "National Green Tribunal Act, 2010",
+        "Public Liability Insurance Act, 1991",
+        "Energy Conservation Act, 2001"
+    ],
+
+    "Tax Law": [
+        "Income Tax Act, 1961",
+        "Central Goods and Services Tax (CGST) Act, 2017",
+        "Integrated Goods and Services Tax (IGST) Act, 2017",
+        "Union Territory Goods and Services Tax (UTGST) Act, 2017",
+        "Customs Act, 1962",
+        "Central Excise Act, 1944",
+        "Black Money (Undisclosed Foreign Income and Assets) and Imposition of Tax Act, 2015"
+    ],
+
+    "Intellectual Property Law": [
+        "Patents Act, 1970",
+        "Copyright Act, 1957",
+        "Trademarks Act, 1999",
+        "Designs Act, 2000",
+        "Geographical Indications of Goods (Registration and Protection) Act, 1999",
+        "Protection of Plant Varieties and Farmers' Rights Act, 2001",
+        "Semiconductor Integrated Circuits Layout-Design Act, 2000"
+    ],
+
+    "Commercial Law": [
+        "Companies Act, 2013",
+        "Negotiable Instruments Act, 1881",
+        "Partnership Act, 1932",
+        "Limited Liability Partnership Act, 2008",
+        "Insolvency and Bankruptcy Code, 2016",
+        "Competition Act, 2002",
+        "Securities and Exchange Board of India Act, 1992",
+        "Foreign Exchange Management Act, 1999"
+    ],
+
+    "Information Technology Law": [
+        "Information Technology Act, 2000",
+        "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021",
+        "Digital Personal Data Protection Act, 2023"
+    ],
+
+    "Consumer Protection Law": [
+        "Consumer Protection Act, 2019",
+        "Legal Metrology Act, 2009",
+        "Food Safety and Standards Act, 2006"
+    ],
+
+    "Criminal Procedure & Evidence": [
+        "Code of Criminal Procedure (CrPC)",
+        "Bharatiya Nagarik Suraksha Sanhita, 2023",
+        "Indian Evidence Act, 1872",
+        "Bharatiya Sakshya Adhiniyam, 2023"
+    ],
+
+    "Human Rights Law": [
+        "Protection of Human Rights Act, 1993",
+        "National Human Rights Commission Act, 1993",
+        "Protection of Civil Rights Act, 1955",
+        "Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989",
+        "Bonded Labour System (Abolition) Act, 1976",
+        "Child Labour (Prohibition and Regulation) Act, 1986",
+        "Dowry Prohibition Act, 1961",
+        "Equal Remuneration Act, 1976",
+        "Rights of Persons with Disabilities Act, 2016",
+        "Right to Information Act, 2005",
+        "Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013",
+        "Juvenile Justice (Care and Protection of Children) Act, 2015",
+        "Transgender Persons (Protection of Rights) Act, 2019",
+        "Whistle Blowers Protection Act, 2014"
+    ]
+};
+
+export default indianLaws;
