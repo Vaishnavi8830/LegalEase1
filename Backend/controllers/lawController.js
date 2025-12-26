@@ -33,7 +33,7 @@ Rules:
 - Simple English
 - Light, natural humor (do not exaggerate)
 - Indian daily-life examples (family, office, market)
-- Maximum 7–8 short paragraphs
+- Maximum 7-8 short paragraphs
 - Beginner-friendly
 - Avoid long dramatic stories or dialogues
 
