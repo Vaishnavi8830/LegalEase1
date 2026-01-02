@@ -1,0 +1,13 @@
+.explanation {
+    background-color: #fff8dc;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.loading {
+    font-size: 1.2rem;
+    margin: 20px 0;
+    color: #ff9800;
+}
