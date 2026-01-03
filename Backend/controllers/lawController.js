@@ -21,7 +21,18 @@ export const explainCategory = async (req, res) => {
         const laws = indianLaws[category];
         if (!laws) return res.status(404).json({ error: "Category not found" });
 
-        const prompt = `Explain the category "${category}" as a fun story in 200 words for an Indian audience. End with a summary.`;
+        const prompt = `Explain the category "${category}" as a fun, simple story for an Indian audience. 
+Use short paragraphs with ONE blank line between them. 
+Structure the story with headings like:
+- Characters
+- Situation
+- Problem
+- Law Explanation
+- What He/She Can Do Next
+- Summary
+- Moral
+Limit the story to 200 words. Use emojis to make headings clear.`;
+
         const aiText = await generateGeminiResponse(prompt);
         res.json({ category, explanation: aiText });
     } catch (error) {
@@ -34,7 +45,21 @@ export const explainLaw = async (req, res) => {
         const { category, law } = req.body;
         if (!indianLaws[category]) return res.status(404).json({ error: "Law not found" });
 
-        const prompt = `Explain the Indian law "${law}" as a story in 200 words. Use simple daily examples.`;
+        const prompt = `Explain the Indian law "${law}" as a STORY with headings and multiple short paragraphs.
+Use this structure:
+- Characters
+- Situation
+- Problem
+- Law Explanation
+- What He/She Can Do Next
+- Summary
+- Moral
+
+Leave ONE blank line between paragraphs. 
+Use simple Indian examples and emojis for headings. 
+Limit to 200 words. 
+Make it suitable for TTS audio narration.`;
+
         const aiText = await generateGeminiResponse(prompt);
         res.json({ category, law, explanation: aiText });
     } catch (error) {
@@ -42,38 +67,16 @@ export const explainLaw = async (req, res) => {
     }
 };
 
-// --- UPDATED AUDIO ROUTES WITH ERROR HANDLING ---
-
-export const explainCategoryAudio = async (req, res) => {
-    try {
-        const { category } = req.body;
-        const laws = indianLaws[category];
-        if (!laws) return res.status(404).json({ error: "Category not found" });
-
-        const prompt = `Explain the category "${category}" as a short, funny Indian story (max 150 words).`;
-        const aiText = await generateGeminiResponse(prompt);
-
-        const gtts = new gTTS(aiText, "en");
-        res.setHeader("Content-Type", "audio/mpeg");
-
-        const stream = gtts.stream();
-        stream.on("error", (err) => {
-            console.error("gTTS Stream Error:", err);
-            res.status(500).end(); // End the response if streaming fails
-        });
-        stream.pipe(res);
-    } catch (error) {
-        console.error("Audio Route Error:", error);
-        res.status(500).json({ error: "Failed to generate category audio" });
-    }
-};
-
+// --- AUDIO ROUTE (LAW STORY ONLY) ---
 export const explainLawAudio = async (req, res) => {
     try {
         const { category, law } = req.body;
         if (!indianLaws[category]) return res.status(404).json({ error: "Category/Law not found" });
 
-        const prompt = `Explain the law "${law}" as a short, funny Indian story (max 150 words).`;
+        const prompt = `Explain the law "${law}" as a short, engaging Indian story with headings (Characters, Situation, Problem, Law Explanation, What He/She Can Do Next, Summary, Moral). 
+Use short paragraphs with ONE blank line between them. 
+Use simple language suitable for audio narration.`;
+
         const aiText = await generateGeminiResponse(prompt);
 
         const gtts = new gTTS(aiText, "en");
