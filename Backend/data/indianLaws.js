@@ -156,4 +156,4 @@ const indianLaws = {
     ]
 };
 
-export default indianLaws;
+export default indianLaws; 

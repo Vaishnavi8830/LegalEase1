@@ -75,6 +75,7 @@ export const explainLawAudio = async (req, res) => {
 
         const prompt = `Explain the law "${law}" as a short, engaging Indian story with headings (Characters, Situation, Problem, Law Explanation, What He/She Can Do Next, Summary, Moral). 
 Use short paragraphs with ONE blank line between them. 
+keep heading in bold like character,situation, etc.
 Use simple language suitable for audio narration.`;
 
         const aiText = await generateGeminiResponse(prompt);
@@ -92,4 +93,4 @@ Use simple language suitable for audio narration.`;
         console.error("Audio Route Error:", error);
         res.status(500).json({ error: "Failed to generate law audio" });
     }
-};
+};    
