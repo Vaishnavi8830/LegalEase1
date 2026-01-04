@@ -19,6 +19,7 @@ function App() {
 
   const audioRef = useRef(null);
 
+  // Fetch categories on load
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/laws/categories")
@@ -26,6 +27,7 @@ function App() {
       .catch((err) => console.error("Fetch Categories Error:", err));
   }, []);
 
+  // Handle category selection
   const selectCategory = async (category) => {
     try {
       setLoading(true);
@@ -40,23 +42,22 @@ function App() {
       }
       setAudioUrl("");
 
+      // Fetch laws under the category
       const lawsRes = await axios.get(
         `http://localhost:5000/api/laws/${encodeURIComponent(category)}`
       );
       setLaws(lawsRes.data.laws);
 
-      const explainRes = await axios.post(
-        "http://localhost:5000/api/laws/explain-category",
-        { category }
-      );
-      setExplanation(explainRes.data.explanation);
+      // ❌ Do NOT fetch AI story here
     } catch (err) {
-      setExplanation("AI explanation not available.");
+      console.error("Fetch Laws Error:", err);
+      setExplanation("Failed to load laws.");
     } finally {
       setLoading(false);
     }
   };
 
+  // Handle law selection → fetch AI story
   const selectLaw = async (law) => {
     try {
       setLoading(true);
@@ -129,17 +130,6 @@ function App() {
       <Navbar />
 
       <div className="app">
-        {/* ========= HERO / HOME SECTION ========= */}
-        {/* <section id="home" className="hero">
-          <h1>"Indian Laws, Simplified for You" </h1>
-          <p><i>
-            LegalEase brings Indian laws to life—understand them through AI-driven stories, clear explanations, and audio guides.
-          </i></p>
-          <a href="#categories" className="hero-btn">
-            Explore Categories
-          </a>
-        </section> */}
-
         <section id="home" className="hero">
           <div className="hero-content">
             <h1>"Indian Laws, Simplified for You"</h1>
@@ -154,8 +144,6 @@ function App() {
             </a>
           </div>
         </section>
-
-
 
         <div className="content-container">
           {/* ========= CATEGORIES ========= */}
@@ -178,6 +166,7 @@ function App() {
             />
           </section>
 
+          {/* ========= AUDIO BUTTONS ========= */}
           {explanation && (
             <div style={{ margin: "1rem 0" }}>
               <button
@@ -213,4 +202,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;

@@ -5,16 +5,16 @@ const CategoryList = ({ categories, selectedCategory, onSelect }) => {
     return (
         <div className="category-list">
             {categories.map((cat) => (
-                <button
+                <div
                     key={cat}
-                    className={`category-btn ${selectedCategory === cat ? "active" : ""}`}
-                    onClick={() => onSelect(cat)}
+                    className={`category-card ${selectedCategory === cat ? "active" : ""}`}
+                    onClick={() => onSelect(cat)} // Make sure this is exactly "onSelect"
                 >
-                    {cat}
-                </button>
+                    <h3>{cat}</h3>
+                </div>
             ))}
         </div>
     );
 };
 
-export default CategoryList; 
+export default CategoryList;
