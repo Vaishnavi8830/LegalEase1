@@ -1,25 +1,43 @@
-// backend/controllers/lawController.js
 import indianLaws from "../data/indianLaws.js";
 import { generateGeminiResponse } from "../services/geminiService.js";
 import gTTS from "gtts";
 
+// --- GET ALL CATEGORIES WITH DESCRIPTIONS ---
+// export const getCategories = (req, res) => {
+//     // Map each category to { name, description }
+//     const categories = Object.keys(indianLaws).map((cat) => ({
+//         name: cat,
+//         description: indianLaws[cat].description || "",
+//     }));
+//     res.json({ categories });
+// };
+
+
 export const getCategories = (req, res) => {
-    const categories = Object.keys(indianLaws);
+    const categories = Object.keys(indianLaws).map((cat) => ({
+        name: cat,
+    }));
     res.json({ categories });
 };
 
+
+
+
+// --- GET LAWS BY CATEGORY ---
 export const getLawsByCategory = (req, res) => {
     const { category } = req.params;
-    const laws = indianLaws[category];
-    if (!laws) return res.status(404).json({ error: "Category not found" });
-    res.json({ category, laws });
+    const categoryData = indianLaws[category];
+    if (!categoryData) return res.status(404).json({ error: "Category not found" });
+
+    res.json({ category, laws: categoryData.laws });
 };
 
+// --- EXPLAIN CATEGORY STORY ---
 export const explainCategory = async (req, res) => {
     try {
         const { category } = req.body;
-        const laws = indianLaws[category];
-        if (!laws) return res.status(404).json({ error: "Category not found" });
+        const categoryData = indianLaws[category];
+        if (!categoryData) return res.status(404).json({ error: "Category not found" });
 
         const prompt = `Explain the category "${category}" as a fun, simple story for an Indian audience. 
 Use short paragraphs with ONE blank line between them. 
@@ -40,10 +58,13 @@ Limit the story to 200 words. Use emojis to make headings clear.`;
     }
 };
 
+// --- EXPLAIN SPECIFIC LAW STORY ---
 export const explainLaw = async (req, res) => {
     try {
         const { category, law } = req.body;
-        if (!indianLaws[category]) return res.status(404).json({ error: "Law not found" });
+        const categoryData = indianLaws[category];
+        if (!categoryData || !categoryData.laws.includes(law))
+            return res.status(404).json({ error: "Law not found" });
 
         const prompt = `Explain the Indian law "${law}" as a STORY with headings and multiple short paragraphs.
 Use this structure:
@@ -67,15 +88,17 @@ Make it suitable for TTS audio narration.`;
     }
 };
 
-// --- AUDIO ROUTE (LAW STORY ONLY) ---
+// --- AUDIO ROUTE FOR LAW STORY ---
 export const explainLawAudio = async (req, res) => {
     try {
         const { category, law } = req.body;
-        if (!indianLaws[category]) return res.status(404).json({ error: "Category/Law not found" });
+        const categoryData = indianLaws[category];
+        if (!categoryData || !categoryData.laws.includes(law))
+            return res.status(404).json({ error: "Category/Law not found" });
 
         const prompt = `Explain the law "${law}" as a short, engaging Indian story with headings (Characters, Situation, Problem, Law Explanation, What He/She Can Do Next, Summary, Moral). 
 Use short paragraphs with ONE blank line between them. 
-keep heading in bold like character,situation, etc.
+Keep headings in bold.
 Use simple language suitable for audio narration.`;
 
         const aiText = await generateGeminiResponse(prompt);
@@ -93,4 +116,4 @@ Use simple language suitable for audio narration.`;
         console.error("Audio Route Error:", error);
         res.status(500).json({ error: "Failed to generate law audio" });
     }
-};    
+};

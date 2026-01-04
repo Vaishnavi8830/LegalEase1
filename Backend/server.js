@@ -22,4 +22,3 @@ app.listen(PORT, () => {
 });
 
 // console.log("Gemini Key:", process.env.GEMINI_API_KEY);
-// 
