@@ -130,7 +130,7 @@ function App() {
 
       <div className="app">
         {/* ========= HERO / HOME SECTION ========= */}
-        <section id="home" className="hero">
+        {/* <section id="home" className="hero">
           <h1>"Indian Laws, Simplified for You" </h1>
           <p><i>
             LegalEase brings Indian laws to life—understand them through AI-driven stories, clear explanations, and audio guides.
@@ -138,7 +138,24 @@ function App() {
           <a href="#categories" className="hero-btn">
             Explore Categories
           </a>
+        </section> */}
+
+        <section id="home" className="hero">
+          <div className="hero-content">
+            <h1>"Indian Laws, Simplified for You"</h1>
+            <p>
+              <i>
+                LegalEase brings Indian laws to life—understand them through AI-driven
+                stories, clear explanations, and audio guides.
+              </i>
+            </p>
+            <a href="#categories" className="hero-btn">
+              Explore Categories
+            </a>
+          </div>
         </section>
+
+
 
         <div className="content-container">
           {/* ========= CATEGORIES ========= */}
