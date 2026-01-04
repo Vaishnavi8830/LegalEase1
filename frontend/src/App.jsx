@@ -17,10 +17,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [audioUrl, setAudioUrl] = useState("");
 
-  // ✅ Ref to store current Audio object
   const audioRef = useRef(null);
 
-  // Load categories
   useEffect(() => {
     axios
       .get("http://localhost:5000/api/laws/categories")
@@ -28,7 +26,6 @@ function App() {
       .catch((err) => console.error("Fetch Categories Error:", err));
   }, []);
 
-  // Category selection (NO AUDIO HERE)
   const selectCategory = async (category) => {
     try {
       setLoading(true);
@@ -60,7 +57,6 @@ function App() {
     }
   };
 
-  // Law selection → generates STORY text
   const selectLaw = async (law) => {
     try {
       setLoading(true);
@@ -85,25 +81,13 @@ function App() {
     }
   };
 
-  // 🔊 AUDIO ONLY FOR STORY (explanation)
   const playStoryAudio = async () => {
-    if (!explanation) {
-      alert("Story not available yet");
-      return;
-    }
+    if (!explanation) return;
 
     try {
       setLoading(true);
 
-      // Clean markdown symbols for TTS
       const cleanText = explanation
-        .replace(/### Characters/g, "Characters:")
-        .replace(/### Situation/g, "Situation:")
-        .replace(/### Problem/g, "Problem:")
-        .replace(/### Law Explanation/g, "Law Explanation:")
-        .replace(/### What He Can Do Next/g, "What He Can Do Next:")
-        .replace(/### Summary/g, "Summary:")
-        .replace(/### Moral/g, "Moral:")
         .replace(/#+\s/g, "")
         .replace(/\*\*/g, "")
         .replace(/\*/g, "");
@@ -116,28 +100,23 @@ function App() {
 
       const url = URL.createObjectURL(res.data);
 
-      // Stop previous audio if any
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.currentTime = 0;
         URL.revokeObjectURL(audioRef.current.src);
       }
 
-      // Create new audio and save in ref
       const audio = new Audio(url);
       audioRef.current = audio;
       setAudioUrl(url);
-
       await audio.play();
     } catch (err) {
-      console.error("Audio Error:", err);
       alert("Failed to play story audio");
     } finally {
       setLoading(false);
     }
   };
 
-  // 🔹 Stop Audio Function
   const stopAudio = () => {
     if (audioRef.current) {
       audioRef.current.pause();
@@ -146,60 +125,75 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <>
       <Navbar />
 
-      <div className="header">
-        <h1>📚 LegalEase – Indian Laws Explorer</h1>
-        <p>Learn Indian laws with fun AI stories 🇮🇳</p>
+      <div className="app">
+        {/* ========= HERO / HOME SECTION ========= */}
+        <section id="home" className="hero">
+          <h1>"Indian Laws, Simplified for You" </h1>
+          <p><i>
+            LegalEase brings Indian laws to life—understand them through AI-driven stories, clear explanations, and audio guides.
+          </i></p>
+          <a href="#categories" className="hero-btn">
+            Explore Categories
+          </a>
+        </section>
+
+        <div className="content-container">
+          {/* ========= CATEGORIES ========= */}
+          <section id="categories">
+            <h2 className="section-title">Categories</h2>
+            <CategoryList
+              categories={categories}
+              selectedCategory={selectedCategory}
+              onSelect={selectCategory}
+            />
+          </section>
+
+          {/* ========= LAWS ========= */}
+          <section id="laws">
+            <h2 className="section-title">Laws</h2>
+            <LawList
+              laws={laws}
+              selectedLaw={selectedLaw}
+              onSelect={selectLaw}
+            />
+          </section>
+
+          {explanation && (
+            <div style={{ margin: "1rem 0" }}>
+              <button
+                className="play-audio-btn"
+                disabled={loading}
+                onClick={playStoryAudio}
+              >
+                🔊 Listen Story
+              </button>
+              <button
+                className="stop-audio-btn"
+                disabled={loading}
+                onClick={stopAudio}
+                style={{ marginLeft: "1rem" }}
+              >
+                ⏹ Stop
+              </button>
+            </div>
+          )}
+
+          <Explanation text={explanation} loading={loading} />
+
+          {audioUrl && (
+            <div className="audio-container">
+              <audio controls src={audioUrl} autoPlay />
+            </div>
+          )}
+        </div>
+
+        <Footer />
       </div>
-
-      <h2 className="section-title">Categories</h2>
-      <CategoryList
-        categories={categories}
-        selectedCategory={selectedCategory}
-        onSelect={selectCategory}
-      />
-
-      <h2 className="section-title">Laws</h2>
-      <LawList
-        laws={laws}
-        selectedLaw={selectedLaw}
-        onSelect={selectLaw}
-      />
-
-      {/* 🔊 STORY AUDIO BUTTON (ONLY HERE) */}
-      {explanation && (
-        <div style={{ margin: "1rem 0" }}>
-          <button
-            className="play-audio-btn"
-            disabled={loading}
-            onClick={playStoryAudio}
-          >
-            🔊 Listen Story
-          </button>
-          <button
-            className="stop-audio-btn"
-            disabled={loading}
-            onClick={stopAudio}
-            style={{ marginLeft: "1rem" }}
-          >
-            ⏹ Stop
-          </button>
-        </div>
-      )}
-
-      <Explanation text={explanation} loading={loading} />
-
-      {audioUrl && (
-        <div className="audio-container">
-          <audio controls src={audioUrl} autoPlay />
-        </div>
-      )}
-
-      <Footer />
-    </div>
+    </>
   );
 }
 
-export default App;
+export default App; 

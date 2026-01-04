@@ -17,4 +17,4 @@ const CategoryList = ({ categories, selectedCategory, onSelect }) => {
     );
 };
 
-export default CategoryList;
+export default CategoryList; 

@@ -1,32 +1,119 @@
+/* =========================
+   Navbar Container
+========================= */
+
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #4caf50;
-    padding: 10px 20px;
-    color: white;
     position: sticky;
+    /* 👈 keeps it on top */
     top: 0;
-    z-index: 100;
+    z-index: 1000;
+
+    width: 100%;
+    background: linear-gradient(90deg, #1E3A8A, #0D9488);
+    /* Navy Blue → Teal gradient */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 40px;
+    box-sizing: border-box;
+    transition: background 0.3s ease;
 }
 
+/* =========================
+   Logo
+========================= */
 .navbar-logo {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #FFFFFF;
+    /* white logo */
 }
 
+/* =========================
+   Links (Desktop)
+========================= */
 .navbar-links {
     list-style: none;
     display: flex;
-    gap: 15px;
+    gap: 22px;
+    margin: 0;
+    padding: 0;
+    font-size: 1.10rem;
 }
 
 .navbar-links li a {
-    color: white;
+    color: #FFFFFF;
+    /* white links */
     text-decoration: none;
     font-weight: 500;
+    transition: 0.3s;
+    padding: 6px 10px;
 }
 
 .navbar-links li a:hover {
-    text-decoration: underline;
+    color: #FBBF24;
+    /* Amber hover effect */
+}
+
+/* AI Button */
+.ai-btn {
+    background: #FBBF24;
+    /* Amber button */
+    color: #1F2937;
+    /* Dark Gray text */
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.ai-btn:hover {
+    background: #FCD34D;
+    /* lighter Amber on hover */
+}
+
+/* =========================
+   Hamburger (Hidden on Desktop)
+========================= */
+.hamburger {
+    display: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* =========================
+   Mobile View
+========================= */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .navbar-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(180deg, #1E3A8A, #0D9488);
+        /* vertical gradient for mobile menu */
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        padding: 20px 0;
+        display: none;
+        transition: max-height 0.3s ease, background 0.3s ease;
+    }
+
+    .navbar-links.active {
+        display: flex;
+    }
+
+    .navbar-links li a {
+        font-size: 1.1rem;
+    }
 }
