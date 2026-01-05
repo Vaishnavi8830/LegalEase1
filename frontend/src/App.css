@@ -23,7 +23,7 @@ a {
 =========================== */
 .hero {
   position: relative;
-  min-height: 85vh;
+  min-height: 90vh;
   width: 100%;
   overflow: hidden;
 
@@ -164,5 +164,129 @@ a {
   .hero-btn {
     width: 100%;
     max-width: 280px;
+  }
+}
+
+
+/* ===========================
+   CATEGORIES PAGE LAYOUT
+=========================== */
+
+.content-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 100px;
+  /* padding: 100px 24px 60px; */
+  /* top | left-right | bottom */
+}
+
+/* Section wrapper */
+#categories {
+  width: 100%;
+}
+
+.section-title::after {
+  content: "";
+  width: 80px;
+  height: 3px;
+  background: #2563eb;
+  display: block;
+  margin: 12px auto 0;
+  /* ✅ centers underline */
+  border-radius: 2px;
+}
+
+
+.section-title {
+  text-align: center;
+}
+
+
+
+/* Section heading */
+.section-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  color: #1f2937;
+  /* dark slate */
+  margin-bottom: 30px;
+  letter-spacing: 0.3px;
+}
+
+/* ===========================
+   CATEGORY LIST GRID
+=========================== */
+
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+/* ===========================
+   CATEGORY CARD
+=========================== */
+
+.category-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 24px 22px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid #eef0f4;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
+}
+
+/* Active category */
+.category-card.active {
+  border-color: #2563eb;
+  box-shadow: 0 14px 40px rgba(37, 99, 235, 0.25);
+}
+
+/* ===========================
+   CARD CONTENT
+=========================== */
+
+.category-card h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 10px;
+}
+
+.category-icon {
+  font-size: 1.6rem;
+}
+
+.category-desc {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media (max-width: 768px) {
+  .content-container {
+    padding: 80px 16px 40px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .category-card {
+    padding: 20px;
   }
 }
