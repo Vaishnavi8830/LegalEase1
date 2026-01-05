@@ -25,7 +25,6 @@
 import React from "react";
 import "./categoryList.css";
 
-
 const categoryIcons = {
     "Constitutional Law": "📜",
     "Criminal Law": "⚖️",
@@ -44,7 +43,6 @@ const categoryIcons = {
     "Human Rights Law": "🤝",
 };
 
-
 const CategoryList = ({ categories, selectedCategory, onSelect }) => {
     return (
         <div className="category-list">
@@ -55,7 +53,6 @@ const CategoryList = ({ categories, selectedCategory, onSelect }) => {
                         }`}
                     onClick={() => onSelect(cat.name)}
                 >
-
                     <h3>
                         <span className="category-icon">
                             {categoryIcons[cat.name] || "📚"}
@@ -64,6 +61,19 @@ const CategoryList = ({ categories, selectedCategory, onSelect }) => {
                     </h3>
 
                     <p className="category-desc">{cat.description}</p>
+
+                    {/* 🔗 External official link */}
+                    {cat.redirectUrl && (
+                        <button
+                            className="learn-more-btn"
+                            onClick={(e) => {
+                                e.stopPropagation(); // ✅ prevents card select
+                                window.open(cat.redirectUrl, "_blank");
+                            }}
+                        >
+                            Learn More ↗
+                        </button>
+                    )}
                 </div>
             ))}
         </div>

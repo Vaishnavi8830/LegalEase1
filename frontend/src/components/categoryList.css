@@ -80,3 +80,17 @@
     font-size: 1.8rem;
     color: #1a237e;
 }
+
+.learn-more-btn {
+    margin-top: 10px;
+    padding: 6px 12px;
+    font-size: 13px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: #f9fafb;
+    cursor: pointer;
+}
+
+.learn-more-btn:hover {
+    background: #eef2ff;
+}
