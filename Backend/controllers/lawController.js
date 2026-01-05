@@ -16,6 +16,7 @@ import gTTS from "gtts";
 export const getCategories = (req, res) => {
     const categories = Object.keys(indianLaws).map((cat) => ({
         name: cat,
+        description: indianLaws[cat].description,
     }));
     res.json({ categories });
 };
@@ -40,16 +41,11 @@ export const explainCategory = async (req, res) => {
         if (!categoryData) return res.status(404).json({ error: "Category not found" });
 
         const prompt = `Explain the category "${category}" as a fun, simple story for an Indian audience. 
+Use **bold headings** for each section: **Characters, Situation, Problem, Law Explanation, What He/She Can Do Next, Summary, Moral**. 
 Use short paragraphs with ONE blank line between them. 
-Structure the story with headings like:
-- Characters
-- Situation
-- Problem
-- Law Explanation
-- What He/She Can Do Next
-- Summary
-- Moral
-Limit the story to 200 words. Use emojis to make headings clear.`;
+Keep sentences simple and easy to understand. Use everyday Indian examples. 
+Limit the story to 200 words. 
+Do NOT use complicated legal terms. Use emojis for headings if needed.`;
 
         const aiText = await generateGeminiResponse(prompt);
         res.json({ category, explanation: aiText });
@@ -58,32 +54,58 @@ Limit the story to 200 words. Use emojis to make headings clear.`;
     }
 };
 
+
 // --- EXPLAIN SPECIFIC LAW STORY ---
 export const explainLaw = async (req, res) => {
     try {
         const { category, law } = req.body;
         const categoryData = indianLaws[category];
-        if (!categoryData || !categoryData.laws.includes(law))
+
+        if (!categoryData || !categoryData.laws.includes(law)) {
             return res.status(404).json({ error: "Law not found" });
+        }
 
-        const prompt = `Explain the Indian law "${law}" as a STORY with headings and multiple short paragraphs.
-Use this structure:
-- Characters
-- Situation
-- Problem
-- Law Explanation
-- What He/She Can Do Next
-- Summary
-- Moral
+        const prompt = `Explain the Indian law "${law}" as a short, engaging story for an Indian audience. 
 
-Leave ONE blank line between paragraphs. 
-Use simple Indian examples and emojis for headings. 
-Limit to 200 words. 
-Make it suitable for TTS audio narration.`;
+⚖️ **Use the following Markdown structure exactly**:
+
+**Characters:**  
+[Introduce characters in simple terms]
+
+**Situation:**  
+[Describe the situation briefly]
+
+**Problem:**  
+[Describe the problem briefly]
+
+**Law Explanation:**  
+• First key point (leave a blank line after)  
+• Second key point (leave a blank line after)  
+• Third key point (leave a blank line after)
+
+**What He/She Can Do Next:**  
+[Explain simple actions]
+
+**Summary:**  
+[Summarize key points]
+
+**Moral:**  
+[Explain the moral in simple language]
+
+**Instructions for AI:**  
+- Keep all headings bold exactly as shown (**Heading** )  
+- Leave ONE blank line between paragraphs and after each bullet point  
+- Use simple Indian examples and emojis if relevant  
+- Limit to 200 words  
+- Make it suitable for TTS audio narration  
+- Output strictly in Markdown format, do NOT add any extra formatting`;
 
         const aiText = await generateGeminiResponse(prompt);
+
         res.json({ category, law, explanation: aiText });
+
     } catch (error) {
+        console.error("Explain Law Error:", error);
         res.status(500).json({ error: "AI text generation failed" });
     }
 };
