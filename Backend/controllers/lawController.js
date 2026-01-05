@@ -118,14 +118,20 @@ export const explainLawAudio = async (req, res) => {
         if (!categoryData || !categoryData.laws.includes(law))
             return res.status(404).json({ error: "Category/Law not found" });
 
-        const prompt = `Explain the law "${law}" as a short, engaging Indian story with headings (Characters, Situation, Problem, Law Explanation, What He/She Can Do Next, Summary, Moral). 
+        const prompt = `Explain the law "${law}" as a short, engaging story with headings (Characters, Situation, Problem, Law Explanation, What He/She Can Do Next, Summary, Moral). 
 Use short paragraphs with ONE blank line between them. 
 Keep headings in bold.
 Use simple language suitable for audio narration.`;
 
-        const aiText = await generateGeminiResponse(prompt);
+        let aiText = await generateGeminiResponse(prompt);
 
-        const gtts = new gTTS(aiText, "en");
+        // ✅ Remove emojis for TTS
+        const textForAudio = aiText.replace(
+            /([\u2700-\u27BF]|[\uE000-\uF8FF]|[\uD83C-\uDBFF\uDC00-\uDFFF])/g,
+            ""
+        );
+
+        const gtts = new gTTS(textForAudio, "en");
         res.setHeader("Content-Type", "audio/mpeg");
 
         const stream = gtts.stream();
