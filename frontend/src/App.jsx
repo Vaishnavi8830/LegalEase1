@@ -166,28 +166,35 @@ function App() {
             />
           </section>
 
+
+
+          <Explanation text={explanation} loading={loading} />
+
           {/* ========= AUDIO BUTTONS ========= */}
           {explanation && (
             <div style={{ margin: "1rem 0" }}>
-              <button
-                className="play-audio-btn"
-                disabled={loading}
-                onClick={playStoryAudio}
-              >
-                🔊 Listen Story
-              </button>
-              <button
-                className="stop-audio-btn"
-                disabled={loading}
-                onClick={stopAudio}
-                style={{ marginLeft: "1rem" }}
-              >
-                ⏹ Stop
-              </button>
-            </div>
-          )}
+              <div className="audio-controls">
+                <button
+                  className="play-audio-btn"
+                  disabled={loading}
+                  onClick={playStoryAudio}
+                >
+                  🔊 Listen Story
+                </button>
+                <button
+                  className="stop-audio-btn"
+                  disabled={loading}
+                  onClick={stopAudio}
+                  style={{ marginLeft: "1rem" }}
+                >
+                  ⏹ Stop
+                </button>
+              </div>
 
-          <Explanation text={explanation} loading={loading} />
+
+            </div>
+
+          )}
 
           {audioUrl && (
             <div className="audio-container">

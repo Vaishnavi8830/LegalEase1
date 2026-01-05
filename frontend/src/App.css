@@ -290,3 +290,71 @@ a {
     padding: 20px;
   }
 }
+
+.play-audio-btn,
+.stop-audio-btn {
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+
+.audio-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* 🔊 Play Button */
+.play-audio-btn {
+  background-color: #1f3c88;
+  /* deep legal blue */
+  color: #ffffff;
+  border-color: #1f3c88;
+}
+
+.play-audio-btn:hover:not(:disabled) {
+  background-color: #162f6b;
+  transform: translateY(-1px);
+}
+
+/* ⏹ Stop Button */
+.stop-audio-btn {
+  background-color: #ffffff;
+  color: #1f3c88;
+  border: 1px solid #1f3c88;
+}
+
+.stop-audio-btn:hover:not(:disabled) {
+  background-color: #f0f4ff;
+  transform: translateY(-1px);
+}
+
+/* 🚫 Disabled State */
+.play-audio-btn:disabled,
+.stop-audio-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* 📱 Mobile Responsive */
+@media (max-width: 480px) {
+
+  .play-audio-btn,
+  .stop-audio-btn {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+}

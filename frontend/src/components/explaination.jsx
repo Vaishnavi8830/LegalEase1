@@ -1,24 +1,3 @@
-// import React from "react";
-// import "./explaination.css";
-// import ReactMarkdown from "react-markdown";
-
-// const Explanation = ({ text, loading }) => {
-//     if (loading) return <div className="loading">🤖 Thinking...</div>;
-//     if (!text) return null;
-
-//     return (
-//         <div id="explanation" className="explanation">
-//             <h3>AI Explanation</h3>
-//             <ReactMarkdown>{text}</ReactMarkdown>
-
-
-//         </div>
-//     );
-// };
-
-// export default Explanation; 
-
-
 import React from "react";
 import "./explaination.css";
 import ReactMarkdown from "react-markdown";
@@ -54,7 +33,7 @@ const Explanation = ({ text, loading }) => {
                     ),
                 }}
             >
-                {text.replace(/\*\*/g, "").replace(/\*/g, "")}
+                {text}
             </ReactMarkdown>
         </div>
     );
