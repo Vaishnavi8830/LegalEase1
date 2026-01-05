@@ -1,6 +1,7 @@
 const indianLaws = {
     "Constitutional Law": {
         description: "Laws regarding the Indian Constitution, fundamental rights, and duties.",
+        redirectUrl: "https://ecourts.gov.in/",
         laws: [
             "Constitution of India",
             "Fundamental Rights",
@@ -14,8 +15,21 @@ const indianLaws = {
         ]
     },
 
+    "RTO / Traffic Law": {
+        description: "Laws for driving, vehicles, road safety, and licenses.",
+        redirectUrl: "https://legalbots.in/blog/20-basic-traffic-laws-and-rights-every-person-in-india-must-know",
+        laws: [
+            "Motor Vehicles Act, 1988",
+            "Road Transport Authority Rules",
+            "Traffic Violations and Fines",
+            "Vehicle Registration Rules",
+            "Driving License Regulations"
+        ]
+    },
+
     "Criminal Law": {
         description: "Laws related to crimes, punishments, and public safety.",
+        redirectUrl: "https://www.animallaw.info/article/introduction-criminal-law-india",
         laws: [
             "Indian Penal Code (IPC)",
             "Bharatiya Nyaya Sanhita, 2023",
@@ -30,6 +44,7 @@ const indianLaws = {
 
     "Civil Law": {
         description: "Laws governing contracts, property, and civil disputes.",
+        redirectUrl: "https://patronslegal.com/blogs/what-are-the-civil-laws-in-india/",
         laws: [
             "Indian Contract Act, 1872",
             "Sale of Goods Act, 1930",
@@ -43,6 +58,7 @@ const indianLaws = {
 
     "Property Law": {
         description: "Laws related to ownership, transfer, and property rights.",
+        redirectUrl: "https://www.anejaandaneja.com/blog/property-laws-in-india.html",
         laws: [
             "Transfer of Property Act, 1882",
             "Indian Succession Act, 1925",
@@ -57,6 +73,7 @@ const indianLaws = {
 
     "Family Law": {
         description: "Laws related to marriage, divorce, child protection, and maintenance.",
+        redirectUrl: "https://www.lexisnexis.com/blogs/in-legal/b/law/posts/family-law-in-india-an-in-depth-discussion-and-historical-perspective",
         laws: [
             "Hindu Marriage Act, 1955",
             "Hindu Succession Act, 1956",
@@ -75,6 +92,7 @@ const indianLaws = {
 
     "Labor Law": {
         description: "Laws protecting workers, employment, and workplace safety.",
+        redirectUrl: "https://clc.gov.in/clc/labour-law",
         laws: [
             "Industrial Disputes Act, 1947",
             "Factories Act, 1948",
@@ -96,6 +114,7 @@ const indianLaws = {
 
     "Environmental Law": {
         description: "Laws protecting the environment, pollution control, and wildlife.",
+        redirectUrl: "https://en.wikipedia.org/wiki/Indian_environmental_law",
         laws: [
             "Environment Protection Act, 1986",
             "Water Pollution Control Act, 1974",
@@ -111,6 +130,7 @@ const indianLaws = {
 
     "Tax Law": {
         description: "Laws related to income tax, GST, and other taxes.",
+        redirectUrl: "https://incometaxindia.gov.in/pages/tax-laws-rules.aspx",
         laws: [
             "Income Tax Act, 1961",
             "Central Goods and Services Tax (CGST) Act, 2017",
@@ -124,6 +144,7 @@ const indianLaws = {
 
     "Intellectual Property Law": {
         description: "Laws protecting inventions, copyrights, trademarks, and designs.",
+        redirectUrl: "https://www.icertis.com/learn/what-is-intellectual-property-law/",
         laws: [
             "Patents Act, 1970",
             "Copyright Act, 1957",
@@ -137,6 +158,7 @@ const indianLaws = {
 
     "Commercial Law": {
         description: "Laws governing business, companies, and trade.",
+        redirectUrl: "https://blog.ipleaders.in/commercial-law-setting-framework-businesses-every-society/",
         laws: [
             "Companies Act, 2013",
             "Negotiable Instruments Act, 1881",
@@ -151,6 +173,7 @@ const indianLaws = {
 
     "Information Technology Law": {
         description: "Laws governing digital, internet, and IT-related activities.",
+        redirectUrl: "https://en.wikipedia.org/wiki/Information_Technology_Act,_2000",
         laws: [
             "Information Technology Act, 2000",
             "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021",
@@ -160,6 +183,7 @@ const indianLaws = {
 
     "Consumer Protection Law": {
         description: "Laws protecting consumers from unfair trade, defective goods, and services.",
+        redirectUrl: "https://consumeraffairs.gov.in/pages/consumer-protection-acts",
         laws: [
             "Consumer Protection Act, 2019",
             "Legal Metrology Act, 2009",
@@ -167,19 +191,11 @@ const indianLaws = {
         ]
     },
 
-    "RTO / Traffic Law": {
-        description: "Laws for driving, vehicles, road safety, and licenses.",
-        laws: [
-            "Motor Vehicles Act, 1988",
-            "Road Transport Authority Rules",
-            "Traffic Violations and Fines",
-            "Vehicle Registration Rules",
-            "Driving License Regulations"
-        ]
-    },
+
 
     "Women Safety Law": {
         description: "Laws ensuring protection and rights of women.",
+        redirectUrl: "https://www.ncw.gov.in/important-links/laws-related-to-women/",
         laws: [
             "Protection of Women from Domestic Violence Act, 2005",
             "Dowry Prohibition Act, 1961",
@@ -191,6 +207,7 @@ const indianLaws = {
 
     "Human Rights Law": {
         description: "Laws protecting civil liberties and human rights.",
+        redirectUrl: "https://en.wikipedia.org/wiki/Human_rights_in_India",
         laws: [
             "Protection of Human Rights Act, 1993",
             "National Human Rights Commission Act, 1993",

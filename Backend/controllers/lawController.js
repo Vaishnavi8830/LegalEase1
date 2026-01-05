@@ -17,6 +17,7 @@ export const getCategories = (req, res) => {
     const categories = Object.keys(indianLaws).map((cat) => ({
         name: cat,
         description: indianLaws[cat].description,
+        redirectUrl: indianLaws[cat].redirectUrl,
     }));
     res.json({ categories });
 };
