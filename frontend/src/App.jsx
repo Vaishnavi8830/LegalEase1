@@ -17,6 +17,8 @@ function App() {
   const [explanation, setExplanation] = useState("");
   const [loading, setLoading] = useState(false);
   const [audioUrl, setAudioUrl] = useState("");
+  const [language, setLanguage] = useState("en");
+
 
   const audioRef = useRef(null);
 
@@ -27,6 +29,8 @@ function App() {
       .then((res) => setCategories(res.data.categories))
       .catch((err) => console.error("Fetch Categories Error:", err));
   }, []);
+
+
 
   // Handle category selection
   const selectCategory = async (category) => {
@@ -71,10 +75,21 @@ function App() {
       }
       setAudioUrl("");
 
+      // const res = await axios.post(
+      //   "http://localhost:5000/api/laws/explain-law",
+      //   { category: selectedCategory, law }
+      // );
+
       const res = await axios.post(
         "http://localhost:5000/api/laws/explain-law",
-        { category: selectedCategory, law }
+        {
+          category: selectedCategory,
+          law,
+          language
+        }
       );
+
+
       setExplanation(res.data.explanation);
     } catch (err) {
       setExplanation("AI explanation not available.");
@@ -94,11 +109,21 @@ function App() {
         .replace(/\*\*/g, "")
         .replace(/\*/g, "");
 
+      // const res = await axios.post(
+      //   "http://localhost:5000/api/tts/stream",
+      //   { text: cleanText },
+      //   { responseType: "blob" }
+      // );
+
       const res = await axios.post(
         "http://localhost:5000/api/tts/stream",
-        { text: cleanText },
+        {
+          text: cleanText,
+          language
+        },
         { responseType: "blob" }
       );
+
 
       const url = URL.createObjectURL(res.data);
 
@@ -146,10 +171,34 @@ function App() {
           </div>
         </section>
 
+
+
+
         <div className="content-container">
           {/* ========= CATEGORIES ========= */}
           <section id="categories">
             <h2 className="section-title">Categories</h2>
+
+            <div className="language-selector">
+              <span className={language === "en" ? "lang active" : "lang"}>
+                EN
+              </span>
+
+              <label className="switch">
+                <input
+                  type="checkbox"
+                  checked={language === "hi"}
+                  onChange={() => setLanguage(language === "en" ? "hi" : "en")}
+                />
+                <span className="slider"></span>
+              </label>
+
+              <span className={language === "hi" ? "lang active" : "lang"}>
+                HI
+              </span>
+            </div>
+
+
             <CategoryList
               categories={categories}
               selectedCategory={selectedCategory}
@@ -204,6 +253,56 @@ function App() {
           )}
         </div>
         <Chatbot />
+
+        <section id="about" className="about-section">
+          <div className="about-header">
+            <h2>About LegalEase</h2>
+            <p>
+              Making legal learning simple, accessible, and engaging with AI-powered tools.
+            </p>
+          </div>
+
+          <div className="about-cards">
+            <div className="about-card">
+              <div className="card-icon">🎯</div>
+              <h3>Our Mission</h3>
+              <p>
+                Empower users with accurate legal knowledge and AI storytelling tools
+                to simplify learning.
+              </p>
+            </div>
+
+            <div className="about-card">
+              <div className="card-icon">🌟</div>
+              <h3>Our Vision</h3>
+              <p>
+                To be the leading platform where law meets technology for everyone.
+              </p>
+            </div>
+
+            <div className="about-card">
+              <div className="card-icon">💡</div>
+              <h3>Our Values</h3>
+              <ul>
+                <li>Accessibility for all</li>
+                <li>Innovation with AI</li>
+                <li>Trust & Accuracy</li>
+                <li>User-Friendly Experience</li>
+              </ul>
+            </div>
+
+            <div className="about-card">
+              <div className="card-icon">👩‍💻</div>
+              <h3>Our Team</h3>
+              <p>
+                A passionate group of developers and AI enthusiasts building LegalEase.
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+
         <Footer />
       </div>
     </>

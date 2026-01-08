@@ -1,24 +1,4 @@
-// import React from "react";
-// import "./categoryList.css";
 
-// const CategoryList = ({ categories, selectedCategory, onSelect }) => {
-//     return (
-//         <div className="category-list">
-//             {categories.map((cat) => (
-//                 <div
-//                     key={cat.name}   // ✅ string key
-//                     className={`category-card ${selectedCategory === cat.name ? "active" : ""
-//                         }`}
-//                     onClick={() => onSelect(cat.name)} // ✅ pass name only
-//                 >
-//                     <h3>{cat.name}</h3>  {/* ✅ render string */}
-//                 </div>
-//             ))}
-//         </div>
-//     );
-// };
-
-// export default CategoryList;
 
 
 
