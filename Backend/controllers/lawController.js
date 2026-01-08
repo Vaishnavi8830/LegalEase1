@@ -3,16 +3,6 @@ import { generateGeminiResponse } from "../services/geminiService.js";
 import gTTS from "gtts";
 
 // --- GET ALL CATEGORIES WITH DESCRIPTIONS ---
-// export const getCategories = (req, res) => {
-//     // Map each category to { name, description }
-//     const categories = Object.keys(indianLaws).map((cat) => ({
-//         name: cat,
-//         description: indianLaws[cat].description || "",
-//     }));
-//     res.json({ categories });
-// };
-
-
 export const getCategories = (req, res) => {
     const categories = Object.keys(indianLaws).map((cat) => ({
         name: cat,
@@ -21,9 +11,6 @@ export const getCategories = (req, res) => {
     }));
     res.json({ categories });
 };
-
-
-
 
 // --- GET LAWS BY CATEGORY ---
 export const getLawsByCategory = (req, res) => {
@@ -37,7 +24,7 @@ export const getLawsByCategory = (req, res) => {
 // --- EXPLAIN CATEGORY STORY ---
 export const explainCategory = async (req, res) => {
     try {
-        const { category } = req.body;
+        const { category, language = "en" } = req.body;
         const categoryData = indianLaws[category];
         if (!categoryData) return res.status(404).json({ error: "Category not found" });
 
@@ -48,18 +35,25 @@ Keep sentences simple and easy to understand. Use everyday Indian examples.
 Limit the story to 200 words. 
 Do NOT use complicated legal terms. Use emojis for headings if needed.`;
 
-        const aiText = await generateGeminiResponse(prompt);
+        let aiText = await generateGeminiResponse(prompt);
+
+        // ✅ TRANSLATE TO HINDI IF SELECTED
+        if (language === "hi") {
+            aiText = await generateGeminiResponse(
+                `Translate the following legal story into simple Hindi:\n\n${aiText}`
+            );
+        }
+
         res.json({ category, explanation: aiText });
     } catch (error) {
         res.status(500).json({ error: "AI text generation failed" });
     }
 };
 
-
 // --- EXPLAIN SPECIFIC LAW STORY ---
 export const explainLaw = async (req, res) => {
     try {
-        const { category, law } = req.body;
+        const { category, law, language = "en" } = req.body;
         const categoryData = indianLaws[category];
 
         if (!categoryData || !categoryData.laws.includes(law)) {
@@ -101,7 +95,14 @@ export const explainLaw = async (req, res) => {
 - Make it suitable for TTS audio narration  
 - Output strictly in Markdown format, do NOT add any extra formatting`;
 
-        const aiText = await generateGeminiResponse(prompt);
+        let aiText = await generateGeminiResponse(prompt);
+
+        // ✅ TRANSLATE TO HINDI IF SELECTED
+        if (language === "hi") {
+            aiText = await generateGeminiResponse(
+                `Translate the following legal explanation into simple Hindi:\n\n${aiText}`
+            );
+        }
 
         res.json({ category, law, explanation: aiText });
 
@@ -114,25 +115,17 @@ export const explainLaw = async (req, res) => {
 // --- AUDIO ROUTE FOR LAW STORY ---
 export const explainLawAudio = async (req, res) => {
     try {
-        const { category, law } = req.body;
-        const categoryData = indianLaws[category];
-        if (!categoryData || !categoryData.laws.includes(law))
-            return res.status(404).json({ error: "Category/Law not found" });
-
-        const prompt = `Explain the law "${law}" as a short, engaging story with headings (Characters, Situation, Problem, Law Explanation, What He/She Can Do Next, Summary, Moral). 
-Use short paragraphs with ONE blank line between them. 
-Keep headings in bold.
-Use simple language suitable for audio narration.`;
-
-        let aiText = await generateGeminiResponse(prompt);
+        const { text, language = "en" } = req.body;
 
         // ✅ Remove emojis for TTS
-        const textForAudio = aiText.replace(
+        const textForAudio = text.replace(
             /([\u2700-\u27BF]|[\uE000-\uF8FF]|[\uD83C-\uDBFF\uDC00-\uDFFF])/g,
             ""
         );
 
-        const gtts = new gTTS(textForAudio, "en");
+        // ✅ LANGUAGE-AWARE TTS
+        const gtts = new gTTS(textForAudio, language === "hi" ? "hi" : "en");
+
         res.setHeader("Content-Type", "audio/mpeg");
 
         const stream = gtts.stream();
@@ -140,7 +133,9 @@ Use simple language suitable for audio narration.`;
             console.error("gTTS Stream Error:", err);
             if (!res.headersSent) res.status(500).json({ error: "Audio stream failed" });
         });
+
         stream.pipe(res);
+
     } catch (error) {
         console.error("Audio Route Error:", error);
         res.status(500).json({ error: "Failed to generate law audio" });
