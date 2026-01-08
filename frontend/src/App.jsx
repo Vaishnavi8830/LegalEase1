@@ -7,6 +7,7 @@ import Footer from "./components/footer";
 import CategoryList from "./components/categoryList";
 import LawList from "./components/lawList";
 import Explanation from "./components/explaination";
+import Chatbot from "./components/Chatbot";
 
 function App() {
   const [categories, setCategories] = useState([]);
@@ -202,7 +203,7 @@ function App() {
             </div>
           )}
         </div>
-
+        <Chatbot />
         <Footer />
       </div>
     </>
