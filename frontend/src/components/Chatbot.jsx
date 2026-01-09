@@ -5,11 +5,14 @@ import "./Chatbot.css";
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { sender: "bot", text: "Hi! I am LegalEase AI. Ask me anything about Indian Law." }
+    {
+      sender: "bot",
+      text: "Hi! I’m LegalEase AI. General legal info only, not legal advice.",
+    },
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
-  
+
   const messagesEndRef = useRef(null);
 
   // Auto-scroll to bottom
@@ -38,7 +41,10 @@ const Chatbot = () => {
       console.error("Chat Error:", error);
       setMessages((prev) => [
         ...prev,
-        { sender: "bot", text: "Sorry, something went wrong. Please try again." },
+        {
+          sender: "bot",
+          text: "Sorry, something went wrong. Please try again.",
+        },
       ]);
     } finally {
       setLoading(false);
@@ -58,7 +64,9 @@ const Chatbot = () => {
       <div className={`chatbot-window ${isOpen ? "open" : ""}`}>
         <div className="chat-header">
           <span>LegalEase Assistant</span>
-          <button className="close-btn" onClick={toggleChat}>✖</button>
+          <button className="close-btn" onClick={toggleChat}>
+            ✖
+          </button>
         </div>
 
         <div className="chat-messages">
