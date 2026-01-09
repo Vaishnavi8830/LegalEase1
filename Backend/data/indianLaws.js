@@ -3,15 +3,12 @@ const indianLaws = {
         description: "Laws regarding the Indian Constitution, fundamental rights, and duties.",
         redirectUrl: "https://ecourts.gov.in/",
         laws: [
-            "Constitution of India",
-            "Fundamental Rights",
-            "Directive Principles of State Policy",
-            "Constitutional Amendments",
-            "Right to Constitutional Remedies",
-            "Judicial Review",
-            "Representation of the People Act, 1950",
-            "Representation of the People Act, 1951",
-            "Contempt of Courts Act, 1971"
+            "Right to Equality (Article 14)",
+            "Freedom of Speech & Expression (Article 19)",
+            "Right to Life & Personal Liberty (Article 21)",
+            "Right to Education (Article 21A)",
+            "Right against Exploitation (Articles 23–24)",
+            "Right to Constitutional Remedies (Article 32)"
         ]
     },
 
@@ -19,11 +16,16 @@ const indianLaws = {
         description: "Laws for driving, vehicles, road safety, and licenses.",
         redirectUrl: "https://legalbots.in/blog/20-basic-traffic-laws-and-rights-every-person-in-india-must-know",
         laws: [
-            "Motor Vehicles Act, 1988",
-            "Road Transport Authority Rules",
-            "Traffic Violations and Fines",
-            "Vehicle Registration Rules",
-            "Driving License Regulations"
+            "Driving License Rules",
+            "Vehicle Registration",
+            "Traffic Signals & Road Signs",
+            "Speed Limits",
+            "Drink and Drive Laws",
+            "Seat Belt & Helmet Rules",
+            "Vehicle Insurance Requirements",
+            "Road Accident Reporting",
+            "Motor Vehicle Act Compliance",
+            "Penalty & Fines for Traffic Violations"
         ]
     },
 
@@ -31,14 +33,14 @@ const indianLaws = {
         description: "Laws related to crimes, punishments, and public safety.",
         redirectUrl: "https://www.animallaw.info/article/introduction-criminal-law-india",
         laws: [
-            "Indian Penal Code (IPC)",
-            "Bharatiya Nyaya Sanhita, 2023",
-            "Narcotic Drugs and Psychotropic Substances Act, 1985",
-            "Prevention of Corruption Act, 1988",
-            "Protection of Children from Sexual Offences Act, 2012",
-            "Arms Act, 1959",
-            "Unlawful Activities (Prevention) Act, 1967",
-            "Prevention of Money Laundering Act, 2002"
+            "Theft (IPC Section 378)",
+            "Assault & Hurt (IPC Sections 319–323)",
+            "Cheating (IPC Section 420)",
+            "Criminal Intimidation (IPC Section 503)",
+            "Murder & Attempt to Murder (IPC Sections 302–307)",
+            "Sexual Offences (POCSO Act, IPC Sections 375–376)",
+            "Narcotics Offences (NDPS Act)",
+            "Corruption & Bribery (Prevention of Corruption Act)"
         ]
     },
 
@@ -46,13 +48,12 @@ const indianLaws = {
         description: "Laws governing contracts, property, and civil disputes.",
         redirectUrl: "https://patronslegal.com/blogs/what-are-the-civil-laws-in-india/",
         laws: [
-            "Indian Contract Act, 1872",
-            "Sale of Goods Act, 1930",
-            "Specific Relief Act, 1963",
-            "Limitation Act, 1963",
-            "Code of Civil Procedure, 1908",
-            "Arbitration and Conciliation Act, 1996",
-            "Indian Trusts Act, 1882"
+            "Contract Agreements & Breach of Contract",
+            "Sale of Goods & Consumer Transactions",
+            "Property Disputes & Ownership Conflicts",
+            "Debt Recovery & Loan Defaults",
+            "Specific Relief & Enforcement of Rights",
+            "Civil Suits & Compensation Claims"
         ]
     },
 
@@ -60,14 +61,12 @@ const indianLaws = {
         description: "Laws related to ownership, transfer, and property rights.",
         redirectUrl: "https://www.anejaandaneja.com/blog/property-laws-in-india.html",
         laws: [
-            "Transfer of Property Act, 1882",
-            "Indian Succession Act, 1925",
-            "Registration Act, 1908",
-            "Indian Easements Act, 1882",
-            "Indian Stamp Act, 1899",
-            "Real Estate (Regulation and Development) Act, 2016 (RERA)",
-            "Prohibition of Benami Property Transactions Act, 1988",
-            "Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013"
+            "Buying/Selling Property Procedures",
+            "Land Registration & Stamp Duty",
+            "Inheritance & Succession Disputes",
+            "RERA – Real Estate Regulations",
+            "Benami Property Rules",
+            "Land Acquisition & Compensation"
         ]
     },
 
@@ -75,18 +74,12 @@ const indianLaws = {
         description: "Laws related to marriage, divorce, child protection, and maintenance.",
         redirectUrl: "https://www.lexisnexis.com/blogs/in-legal/b/law/posts/family-law-in-india-an-in-depth-discussion-and-historical-perspective",
         laws: [
-            "Hindu Marriage Act, 1955",
-            "Hindu Succession Act, 1956",
-            "Hindu Adoption and Maintenance Act, 1956",
-            "Hindu Minority and Guardianship Act, 1956",
-            "Special Marriage Act, 1954",
-            "Muslim Personal Law",
-            "Christian Marriage Act, 1872",
-            "Parsi Marriage and Divorce Act, 1936",
-            "Guardians and Wards Act, 1890",
-            "Prohibition of Child Marriage Act, 2006",
-            "Protection of Women from Domestic Violence Act, 2005",
-            "Maintenance and Welfare of Parents and Senior Citizens Act, 2007"
+            "Marriage Registration & Legal Recognition",
+            "Divorce & Alimony Cases",
+            "Child Custody & Adoption",
+            "Domestic Violence Protection",
+            "Maintenance for Spouse/Children",
+            "Prevention of Child Marriage"
         ]
     },
 
@@ -94,21 +87,12 @@ const indianLaws = {
         description: "Laws protecting workers, employment, and workplace safety.",
         redirectUrl: "https://clc.gov.in/clc/labour-law",
         laws: [
-            "Industrial Disputes Act, 1947",
-            "Factories Act, 1948",
-            "Minimum Wages Act, 1948",
-            "Payment of Wages Act, 1936",
-            "Employees' State Insurance Act, 1948",
-            "Employees' Provident Funds Act, 1952",
-            "Maternity Benefit Act, 1961",
-            "Payment of Bonus Act, 1965",
-            "Contract Labour (Regulation and Abolition) Act, 1970",
-            "Payment of Gratuity Act, 1972",
-            "Trade Unions Act, 1926",
-            "Code on Wages, 2019",
-            "Industrial Relations Code, 2020",
-            "Code on Social Security, 2020",
-            "Occupational Safety, Health and Working Conditions Code, 2020"
+            "Minimum Wages & Salary Rights",
+            "Working Hours & Leave Entitlements",
+            "Employee Provident Fund & Insurance",
+            "Maternity & Paternity Benefits",
+            "Workplace Safety & Health Standards",
+            "Trade Union Rights & Collective Bargaining"
         ]
     },
 
@@ -116,15 +100,12 @@ const indianLaws = {
         description: "Laws protecting the environment, pollution control, and wildlife.",
         redirectUrl: "https://en.wikipedia.org/wiki/Indian_environmental_law",
         laws: [
-            "Environment Protection Act, 1986",
-            "Water Pollution Control Act, 1974",
-            "Air Pollution Control Act, 1981",
-            "Wildlife Protection Act, 1972",
-            "Forest Conservation Act, 1980",
-            "Biological Diversity Act, 2002",
-            "National Green Tribunal Act, 2010",
-            "Public Liability Insurance Act, 1991",
-            "Energy Conservation Act, 2001"
+            "Pollution Control Rules (Air/Water/Solid Waste)",
+            "Wildlife Protection & Endangered Species",
+            "Forest Conservation Regulations",
+            "Environmental Impact Assessment for Projects",
+            "Plastic Ban & Waste Management",
+            "Energy Conservation Requirements"
         ]
     },
 
@@ -132,13 +113,11 @@ const indianLaws = {
         description: "Laws related to income tax, GST, and other taxes.",
         redirectUrl: "https://incometaxindia.gov.in/pages/tax-laws-rules.aspx",
         laws: [
-            "Income Tax Act, 1961",
-            "Central Goods and Services Tax (CGST) Act, 2017",
-            "Integrated Goods and Services Tax (IGST) Act, 2017",
-            "Union Territory Goods and Services Tax (UTGST) Act, 2017",
-            "Customs Act, 1962",
-            "Central Excise Act, 1944",
-            "Black Money (Undisclosed Foreign Income and Assets) and Imposition of Tax Act, 2015"
+            "Income Tax Filing & Payment Rules",
+            "Goods and Services Tax (GST) Compliance",
+            "Customs Duties & Import Regulations",
+            "Black Money and Undisclosed Assets Rules",
+            "Corporate Tax & Tax Deductions"
         ]
     },
 
@@ -146,13 +125,12 @@ const indianLaws = {
         description: "Laws protecting inventions, copyrights, trademarks, and designs.",
         redirectUrl: "https://www.icertis.com/learn/what-is-intellectual-property-law/",
         laws: [
-            "Patents Act, 1970",
-            "Copyright Act, 1957",
-            "Trademarks Act, 1999",
-            "Designs Act, 2000",
-            "Geographical Indications of Goods (Registration and Protection) Act, 1999",
-            "Protection of Plant Varieties and Farmers' Rights Act, 2001",
-            "Semiconductor Integrated Circuits Layout-Design Act, 2000"
+            "Patent Registration & Protection",
+            "Copyright of Books, Music, Software",
+            "Trademark & Brand Protection",
+            "Design Rights & Industrial Designs",
+            "Geographical Indications Protection",
+            "Plant Varieties & Farmers' Rights"
         ]
     },
 
@@ -160,14 +138,12 @@ const indianLaws = {
         description: "Laws governing business, companies, and trade.",
         redirectUrl: "https://blog.ipleaders.in/commercial-law-setting-framework-businesses-every-society/",
         laws: [
-            "Companies Act, 2013",
-            "Negotiable Instruments Act, 1881",
-            "Partnership Act, 1932",
-            "Limited Liability Partnership Act, 2008",
-            "Insolvency and Bankruptcy Code, 2016",
-            "Competition Act, 2002",
-            "Securities and Exchange Board of India Act, 1992",
-            "Foreign Exchange Management Act, 1999"
+            "Company Registration & Compliance",
+            "Partnership & LLP Rules",
+            "Negotiable Instruments & Cheques",
+            "Insolvency & Bankruptcy Procedures",
+            "Competition Law & Anti-Trust Rules",
+            "SEBI Regulations & Securities Law"
         ]
     },
 
@@ -175,9 +151,11 @@ const indianLaws = {
         description: "Laws governing digital, internet, and IT-related activities.",
         redirectUrl: "https://en.wikipedia.org/wiki/Information_Technology_Act,_2000",
         laws: [
-            "Information Technology Act, 2000",
-            "Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021",
-            "Digital Personal Data Protection Act, 2023"
+            "Data Privacy & Protection",
+            "Cyber Crimes & Hacking",
+            "Social Media & Intermediary Rules",
+            "Digital Contracts & E-Signatures",
+            "Online Fraud & Phishing Cases"
         ]
     },
 
@@ -185,23 +163,22 @@ const indianLaws = {
         description: "Laws protecting consumers from unfair trade, defective goods, and services.",
         redirectUrl: "https://consumeraffairs.gov.in/pages/consumer-protection-acts",
         laws: [
-            "Consumer Protection Act, 2019",
-            "Legal Metrology Act, 2009",
-            "Food Safety and Standards Act, 2006"
+            "Filing Complaints for Defective Products",
+            "Consumer Rights for Services",
+            "Refunds, Replacement, and Compensation",
+            "Misleading Advertisements & Legal Remedies"
         ]
     },
-
-
 
     "Women Safety Law": {
         description: "Laws ensuring protection and rights of women.",
         redirectUrl: "https://www.ncw.gov.in/important-links/laws-related-to-women/",
         laws: [
-            "Protection of Women from Domestic Violence Act, 2005",
-            "Dowry Prohibition Act, 1961",
-            "Sexual Harassment of Women at Workplace Act, 2013",
-            "Prohibition of Child Marriage Act, 2006",
-            "Criminal Law (Amendment) Act, 2013"
+            "Domestic Violence Protection",
+            "Sexual Harassment at Workplace",
+            "Dowry Prohibition Enforcement",
+            "Protection from Stalking & Harassment",
+            "Child Marriage Prohibition"
         ]
     },
 
@@ -209,11 +186,11 @@ const indianLaws = {
         description: "Laws protecting civil liberties and human rights.",
         redirectUrl: "https://en.wikipedia.org/wiki/Human_rights_in_India",
         laws: [
-            "Protection of Human Rights Act, 1993",
-            "National Human Rights Commission Act, 1993",
-            "Protection of Civil Rights Act, 1955",
-            "Scheduled Castes and Scheduled Tribes (Prevention of Atrocities) Act, 1989",
-            "Bonded Labour System (Abolition) Act, 1976"
+            "Protection of Civil Rights",
+            "Right Against Bonded Labour",
+            "Rights of Scheduled Castes & Tribes",
+            "National Human Rights Commission Protections",
+            "Protection of Individual Liberties"
         ]
     }
 };
